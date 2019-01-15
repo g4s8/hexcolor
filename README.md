@@ -1,6 +1,23 @@
-# hexcolor.
+# hexcolor
 Hex image/color implementation for go
 
+## Usage
+
+Download: `go get -u github.com/g4s8/hexcolor`
+
+Example:
+```go
+import "github.com/g4s8/hexcolor"
+import "image/color"
+
+func main() {
+  var c color.Color
+  c, err := hexcolor.Parse("#fc12bd")
+  if err != nil {
+    panic(err)
+  }
+}
+```
 
 [![DevOps By Rultor.com](http://www.rultor.com/b/g4s8/hexcolor)](http://www.rultor.com/p/g4s8/hexcolor)
 
