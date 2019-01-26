@@ -46,3 +46,21 @@ func checkColor(t *testing.T, expected, actual color.Color) {
 		t.Fatalf("expected %3v but was %3v", expected, actual)
 	}
 }
+
+func benchmarkParse(s string, b *testing.B) {
+	for n := 0; n < b.N; n++ {
+		Parse(s)
+	}
+}
+
+func BenchmarkParseLong(b *testing.B) {
+	benchmarkParse("#7fffd4", b)
+}
+
+func BenchmarkParseShort(b *testing.B) {
+	benchmarkParse("#123", b)
+}
+
+func BenchmarkParseErr(b *testing.B) {
+	benchmarkParse("foobar", b)
+}
