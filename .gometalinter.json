@@ -21,6 +21,6 @@
     "goconst",
     "structcheck"
   ],
-  "Cyclo": 10,
+  "Cyclo": 12,
   "Aggregate": true
 }
