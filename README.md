@@ -32,7 +32,5 @@ func main() {
 
 ## Contribution
 Fork repository, clone it, make changes,
+check with `go build && go test && go vet`,
 push to new branch and submit a pull request.
-
-
-
