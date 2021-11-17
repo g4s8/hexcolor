@@ -10,8 +10,6 @@ import (
 	"testing"
 )
 
-// @todo #1:30min Add tests to cover invalid color inputs
-//  to check that error is correct.
 func TestParseHex(t *testing.T) {
 	cases := []struct {
 		hex string
