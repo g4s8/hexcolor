@@ -1,6 +1,10 @@
+// The MIT License (MIT) Copyright (c) 2019-2021 artipie.com
+// https://github.com/g4s8/hexcolor/blob/master/LICENSE
+
 package hexcolor
 
 import (
+	"errors"
 	"fmt"
 	"image/color"
 	"testing"
@@ -30,6 +34,30 @@ func TestParseHex(t *testing.T) {
 	}
 	for _, c := range cases {
 		t.Run(fmt.Sprintf("parseHex(%s)", c.hex), checkHex(c.hex, c.rgb))
+	}
+}
+
+func TestInvalidHexWithoutInitSymbol(t *testing.T) {
+	_, err := Parse("abc")
+	checkErr(t, err)
+}
+
+func TestInvalidHexSymbols(t *testing.T) {
+	_, err := Parse("#abx")
+	checkErr(t, err)
+}
+
+func TestInvalidHexCount(t *testing.T) {
+	_, err := Parse("#abcdef123")
+	checkErr(t, err)
+}
+
+func checkErr(t *testing.T, err error) {
+	if err == nil {
+		t.Errorf("expected invalid error but got nil")
+	}
+	if !errors.Is(ErrInvalidFormat, err) {
+		t.Errorf("expected invalid error but got %s", err)
 	}
 }
 

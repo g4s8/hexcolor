@@ -1,3 +1,6 @@
+// The MIT License (MIT) Copyright (c) 2019-2021 artipie.com
+// https://github.com/g4s8/hexcolor/blob/master/LICENSE
+
 package hexcolor
 
 import (
@@ -5,16 +8,22 @@ import (
 	"image/color"
 )
 
-// Parse - parse hex string to image/color
+// ErrInvalidFormat indicates that format of hex color
+// string is invalid.
+var ErrInvalidFormat = errors.New("invalid hex color format")
+
+// Parse hex string to image/color
+// It takes #RGB, #RRGGBB, #ARGB, #AARRGGBB strings as input
+// and parse it to RGBA color from `color` Go package.
+// In case of invalid hex, it returns error
 func Parse(hex string) (c color.RGBA, err error) {
 	// got this parsing code from here https://stackoverflow.com/a/54200713/1723695
 
-	var errInvalidFormat = errors.New("invalid format")
 
 	c.A = 0xff
 
 	if hex[0] != '#' {
-		return c, errInvalidFormat
+		return c, ErrInvalidFormat
 	}
 
 	hexToByte := func(b byte) byte {
@@ -26,7 +35,7 @@ func Parse(hex string) (c color.RGBA, err error) {
 		case b >= 'A' && b <= 'F':
 			return 10 + b - 'A'
 		}
-		err = errInvalidFormat
+		err = ErrInvalidFormat
 		return 0
 	}
 
@@ -50,7 +59,7 @@ func Parse(hex string) (c color.RGBA, err error) {
 		c.G = hexToByte(hex[2]) * 17
 		c.B = hexToByte(hex[3]) * 17
 	default:
-		err = errInvalidFormat
+		err = ErrInvalidFormat
 	}
 	return
 }
