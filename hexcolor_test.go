@@ -1,4 +1,5 @@
-// The MIT License (MIT) Copyright (c) 2019-2021 artipie.com
+// The MIT License (MIT)
+// Copyright (c) 2019-2023 Kirill Che. <g4s8.public@gmail.com>
 // https://github.com/g4s8/hexcolor/blob/master/LICENSE
 
 package hexcolor

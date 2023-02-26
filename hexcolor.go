@@ -1,4 +1,5 @@
-// The MIT License (MIT) Copyright (c) 2019-2021 artipie.com
+// The MIT License (MIT)
+// Copyright (c) 2019-2023 Kirill Che. <g4s8.public@gmail.com>
 // https://github.com/g4s8/hexcolor/blob/master/LICENSE
 
 package hexcolor
@@ -18,7 +19,6 @@ var ErrInvalidFormat = errors.New("invalid hex color format")
 // In case of invalid hex, it returns error
 func Parse(hex string) (c color.RGBA, err error) {
 	// got this parsing code from here https://stackoverflow.com/a/54200713/1723695
-
 
 	c.A = 0xff
 
